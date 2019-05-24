@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import '../css/App.css';
 import '../css/new-age.css';
 import Header from './Header';
@@ -24,63 +24,52 @@ const Login = () => (
 class App extends Component {
 
   state = {
-    presupuesto : '',
-    restante : '',
+    presupuesto: '',
+    restante: '',
     gastos: {}
   }
 
   //AGREGAR UN NUEVO GASTO AL STATE
-  agregarGasto = gasto =>{
+  agregarGasto = gasto => {
     //TOMAR UNA COPIA DEL STATE ACTUAL
-    const gastos = {...this.state.gastos};
-    
+    const gastos = { ...this.state.gastos };
+
     //AGRGAR AL GASTO AL OBJETO DEL STATE
     gastos[`gasto ${Date.now()}`] = gasto;
     console.log(gastos);
-    
+
     //PONERLO EN STATE
     this.setState({
-      gastos : gastos
+      gastos: gastos
     })
 
 
   }
-  render(){
+  render() {
 
-  return (
-    <div className = "App container">
-
-<Router>
-
-
-      <Home/>
-      <ul>
-      <li><Link to="/login">Login</Link></li>
-      </ul>
-
-      <div className = "contenido-principal contenido">
-        <div className = "row">
-
-          <div className = "one-half column">
-            <Formulario agregarGasto = {this.agregarGasto}
-            />
+    return (
+      <div className="App">
+        <Router>
+          <Home />
+          <ul>
+            <li><Link to="/login">Login</Link></li>
+          </ul>
+          <div className="contenido-principal contenido container">
+            <div className="row">
+              <div className="one-half column">
+                <Formulario agregarGasto={this.agregarGasto}
+                />
+              </div>
+              <div className="one-half column">
+              </div>
+            </div>
           </div>
-
-          <div className = "one-half column">
-            
-          </div>
-
-        </div>
+          <Switch>
+            <Route path="/login" exact component={Login} />
+          </Switch>
+        </Router>
       </div>
-
-      <Switch>
-        
-          <Route path="/login" exact component={Login} />
-        </Switch>
-
-      </Router>
-    </div>
-  );
-}
+    );
+  }
 }
 export default App;
