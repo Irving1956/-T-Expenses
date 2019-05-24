@@ -1,7 +1,12 @@
 import React, { Component} from 'react';
 import '../css/App.css';
+import '../css/new-age.css';
 import Header from './Header';
 import Formulario from './Formulario';
+import Home from './Home';
+import 'bootstrap/dist/css/bootstrap.css';
+
+
 
 
 import {
@@ -47,7 +52,8 @@ class App extends Component {
 
 <Router>
 
-      <Header titulo = 'Mis gastos Hormiga'/>
+
+      <Home/>
       <ul>
       <li><Link to="/login">Login</Link></li>
       </ul>
